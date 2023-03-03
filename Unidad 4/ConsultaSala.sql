@@ -1,0 +1,1 @@
+SELECT sala, MAX(precio), MIN(precio), AVG(precio) FROM conferencia GROUP BY sala;

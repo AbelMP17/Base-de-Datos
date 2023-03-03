@@ -1,0 +1,1 @@
+SELECT nombre, apellido1, apellido2 FROM asistente ORDER BY apellido1 ASC LIMIT 0,5;

@@ -1,0 +1,1 @@
+SELECT 10-5 AS "Resta", 10+5 AS "Suma", 10/5 AS "División", 10*5 AS "Multiplicación";

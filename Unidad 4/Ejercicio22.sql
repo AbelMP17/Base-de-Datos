@@ -1,0 +1,1 @@
+SELECT AVG(gratificaciones) AS media_gratificaciones FROM ponentes;

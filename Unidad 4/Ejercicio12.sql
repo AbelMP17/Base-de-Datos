@@ -1,0 +1,1 @@
+SELECT * FROM conferencia WHERE tema like "Programación%" ORDER BY precio DESC;

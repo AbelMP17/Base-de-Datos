@@ -1,0 +1,1 @@
+SELECT * FROM asistente WHERE empresa = "BigSoft" ORDER BY fechaNac DESC;

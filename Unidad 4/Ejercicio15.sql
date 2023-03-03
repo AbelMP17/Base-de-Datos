@@ -1,0 +1,1 @@
+SELECT UPPER(nombre) UPPER(apellido1) UPPER(apellido2) UPPER(especialidad), CONCAT(apellido1,' ',apellido2) apellidos ORDER BY apellidos;

@@ -1,0 +1,1 @@
+SELECT nombre, apellidos FROM conferencias.asistente WHERE empresa = "BK Programación"

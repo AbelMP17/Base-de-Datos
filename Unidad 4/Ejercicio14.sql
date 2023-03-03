@@ -1,0 +1,1 @@
+SELECT DATE_FORMAT(fecha,'%d/%m/%Y') AS fecha,FLOOR(precio*1.05) AS "precio_calculado" FROM conferencia ORDER BY "precio_calculado" DESC;
