@@ -3,4 +3,4 @@
 -- Con JOIN --
 SELECT  nombre, apellido1, apellido2, SUM(participar.gratificacion) AS gratificaciones
 FROM ponente JOIN participar ON(ponente.codigo = participar.codPonente)
-            GROUP BY nombre, apellido1, apellido;
+            GROUP BY nombre, apellido1, apellido;SELECT * FROM `asistente`
