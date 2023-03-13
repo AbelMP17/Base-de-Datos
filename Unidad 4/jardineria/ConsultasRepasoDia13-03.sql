@@ -42,3 +42,17 @@ WHERE id_cliente IN(SELECT id_cliente
                                                                     WHERE cantidad_en_stock =(SELECT MAX(cantidad_en_stock)
                                                                                                 FROM producto))))
 ORDER BY nombre_cliente;
+
+/*4. Nombre cliente cuyo rp_de_ventas tiene la oficina en madrid es el que mas compra de la gama "herramientas".*/
+SELECT nombre_cliente
+FROM cliente
+WHERE id_empleado_rep_ventas IN(SELECT id_empleado
+                                FROM empleado JOIN oficina USING(codigo_oficina)
+                                WHERE ciudad="Madrid")
+                            AND id_cliente IN(SELECT id_cliente
+                                                FROM pedido JOIN detalle_pedido USING(codigo_pedido)
+                                                            JOIN producto USING(codigo_producto)
+                                                WHERE gama="Herramientas" AND codigo_producto IN(SELECT codigo_producto
+                                                                                                FROM producto
+                                                                                                WHERE cantidad_en_stock =(SELECT MAX(cantidad_en_stock)
+                                                                                                                            FROM producto)));
