@@ -1,0 +1,56 @@
+/*
+Autor: Abel Martínez Peinado
+Fecha: 15 / 03 / 2023
+*/
+-- Ejercicio 01
+SELECT nombre, CONCAT_WS(" ", apellido1, apellido2) AS apellidos
+FROM asistente
+WHERE empresa != "BK Programación" AND sexo = 'M' AND fechaNac BETWEEN "1970-01-01" AND "1990-12-31"
+ORDER BY fechaNac;
+
+-- Ejercicio 02
+SELECT CONCAT_WS(" ",nombre,apellido1,apellido2)AS NombreCompleto,  NVL(especialidad,"Sin Especialidad") AS especialidad
+FROM ponente
+WHERE apellido1 LIKE '_r%_g'
+ORDER BY NombreCompleto;
+
+-- Ejercicio 03
+SELECT codigo, CONCAT_WS(" ", nombre, apellido1, NVL(apellido2,"Sin Apellido"))AS nombre_completo, sexo, DATE_FORMAT(fechaNac,"%d-%m-%Y") AS fecha_nacimiento, NVL(empresa,"Sin Empresa") AS empresa
+FROM asistente
+ORDER BY fechaNac DESC LIMIT 2,5;
+
+-- Ejercicio 04
+
+-- Ejercicio 05
+SELECT tema, CONCAT_WS("",ROUND(precio-(precio * 0.15),2),"€") AS precio, DATE_FORMAT(fecha,'%d/%m/%Y') AS fecha, sala AS nombre, capacidad
+FROM `conferencia` JOIN sala ON(conferencia.sala = sala.nombre)
+WHERE turno='M'
+ORDER BY fecha DESC;
+
+-- Ejercicio 06
+SELECT tema, COUNT(codigo) AS numero_ponentes, CONCAT_WS(" ","€",MAX(gratificacion)) AS gratificacion
+FROM ponente JOIN participar ON(ponente.codigo = participar.codPonente)
+			JOIN conferencia ON(participar.refConferencia = conferencia.referencia)
+GROUP BY tema
+ORDER BY MAX(gratificacion);
+
+-- Ejercicio 07
+SELECT CONCAT_WS(" ", nombre, apellido1, apellido2) AS Asistente, SUM(precio) AS precio
+FROM asistente JOIN asistir ON(asistente.codigo = asistir.codAsistente)
+				JOIN conferencia ON(asistir.refConferencia = conferencia.referencia)
+GROUP BY asistente.nombre HAVING SUM(precio) < 50
+ORDER BY precio;
+
+-- Ejercicio 08
+
+-- Ejercicio 09
+SELECT tema
+FROM conferencia JOIN asistir ON(conferencia.referencia = asistir.refConferencia)
+				WHERE asistir.codAsistente IN(SELECT codigo
+                                             FROM asistente
+                                             WHERE fechaNac=(SELECT MIN(fechaNac)
+                                                              FROM asistente))
+                ORDER BY tema DESC;
+
+-- Ejercicio 10
+
