@@ -45,11 +45,13 @@ ORDER BY precio;
 
 -- Ejercicio 09
 SELECT tema
-FROM conferencia JOIN asistir ON(conferencia.referencia = asistir.refConferencia)
-				WHERE asistir.codAsistente IN(SELECT codigo
-                                             FROM asistente
-                                             WHERE fechaNac=(SELECT MIN(fechaNac)
-                                                              FROM asistente))
+FROM conferencia 
+WHERE conferencia.referencia IN(SELECT refConferencia
+                                FROM asistir
+                                WHERE asistir.codAsistente IN(SELECT codigo
+                                                            FROM asistente
+                                                            WHERE fechaNac=(SELECT MAX(fechaNac)
+                                                                            FROM asistente)))
                 ORDER BY tema DESC;
 
 -- Ejercicio 10
