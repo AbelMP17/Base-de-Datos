@@ -76,7 +76,7 @@ UPDATE producto SET precio = precio+5;
 /*====================================================================================*/
 
 /*12. Eliminar todas las impresoras que tienen un precio menor de 200 €.*/
-DELETE FROM producto WHERE nombre LIKE "impresora" AND precio<200;
+DELETE FROM producto WHERE nombre LIKE "%impresora%" AND precio<200;
 
 /*====================================================================================*/
 
@@ -141,7 +141,7 @@ WHERE genero = "Animacion";
 DELETE FROM socio
 WHERE num_socio IN (SELECT socio
                     FROM alquiler
-                    WHERE fec_devolucion < "2014-12-01");
+                    WHERE fec_alquila < "2014-12-01");
 
 /*====================================================================================*/
 
@@ -155,9 +155,9 @@ UPDATE pelicula SET precio_alquiler = precio_alquiler + 0.20 WHERE codigo IN (SE
 
 /*24. Eliminar todas las copias de las películas que contengan la palabra "FROZEN" y que su estado sea
 "ESTROPEADA".*/
-DELETE FROM copia_pelicula
-WHERE estado LIKE "ESTROPEADA" AND pelicula IN (SELECT codigo
+ELETE FROM copia_pelicula
+WHERE estado = "ESTROPEADA" AND pelicula IN (SELECT codigo
                                                 FROM pelicula
-                                                WHERE titulo LIKE "FROZEN");
+                                                WHERE titulo LIKE "%FROZEN%");D
 
 /*====================================================================================*/
